@@ -24,6 +24,7 @@ spl_autoload_register( function($class) {
 function ims_inflowcrm_init() {
     new IMS_InflowCRM\Admin\AdminMenu();
     //new IMS_InflowCRM\Frontend\Shortcode();
+    new IMS_InflowCRM\Admin\Settings();
 }
 
 add_action('plugins_loaded', 'ims_inflowcrm_init');
