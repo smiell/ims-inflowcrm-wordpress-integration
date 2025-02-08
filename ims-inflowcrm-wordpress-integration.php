@@ -1,4 +1,7 @@
 <?php
+
+use IMS_InflowCRM\Admin\ContactFormsView;
+
 /**
  * Plugin Name: IMS InflowCRM Wordpress Integration
  * Plugin URI:  https://imspartner.pl
@@ -28,3 +31,13 @@ function ims_inflowcrm_init() {
 }
 
 add_action('plugins_loaded', 'ims_inflowcrm_init');
+
+function prepare_db() {
+    $db = new IMS_InflowCRM\Db\ImsInflowDbHandler();
+	$db->IMSInflowPrepareDb();
+}
+register_activation_hook(__FILE__, 'prepare_db');
+
+// Ajax for contact forms builder
+add_action('wp_ajax_ims_save_contact_form', array('IMS_InflowCRM\Admin\ContactForm', 'handle_save_contact_form'));
+

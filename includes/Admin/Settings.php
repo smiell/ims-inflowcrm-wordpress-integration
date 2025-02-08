@@ -39,7 +39,7 @@ class Settings {
      * The Plugin Settings constructor.
      */
     public function __construct() {
-        add_action('admin_menu', [$this, 'add_plugin_menu'], 99);
+        //add_action('admin_menu', [$this, 'add_plugin_menu'], 99);
         add_action('admin_init', [$this, 'register_settings']);
     }
 

@@ -39,6 +39,21 @@ class AdminMenu {
                 case 'help':
                     $sites_manager->admin_help_view();
                     break;
+                case 'contact-forms':
+					// in case of another internal request etc. create a new form
+		            if( isset($_GET['action']) && $_GET['action']) {
+						// create a new form
+			            if( $_GET['action'] == 'create-form' ) {
+			                $sites_manager->admin_contact_form_create_view();
+			            }
+						if( $_GET['action'] == 'edit' ) {
+							error_log('edit');
+						}
+		            } else {
+						// default view -> list of contact forms
+			            $sites_manager->admin_contact_forms_view();
+		            }
+                    break;
                 default:
                     $sites_manager->admin_home_view();
                     break;
